@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Articles;
 use App\Entity\Categories;
 use App\Entity\Users;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -60,7 +61,7 @@ class AppFixtures extends Fixture
         $categoriesString = ['Entrée', 'Plat', 'Dessert', 'Apéritif', 'Gourmandise'];
         $categories = [];
 
-        for ($i = 0; $i < count($categoriesString); $i++) {
+        for ($i = 0; $i < count($categoriesString)-1; $i++) {
             $category = new Categories();
             $category
                 ->setName($categoriesString[$i]);
@@ -75,7 +76,8 @@ class AppFixtures extends Fixture
         $ingredients = "Inconnus";
         $content = "Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.";
         $time = strtotime('10/01/2022');
-        $literalTime = \DateTime::createFromFormat("d/m/Y",$time);
+        $literalTime = new DateTime();
+        // $literalTime = \DateTime::createFromFormat("d/m/Y",$time);
 
         for ($j = 0; $j < count($img); $j++) {
             $article = new Articles();
@@ -85,8 +87,8 @@ class AppFixtures extends Fixture
                 ->setContent($content)
                 ->setDateCreate($literalTime)
                 ->setIngredients($ingredients)
-                ->setIdCategorie($categories[rand(0,count($categories))])
-                ->setIdUser($users[rand(0,count($users))]);
+                ->setIdCategorie($categories[rand(0,count($categories)-1)])
+                ->setIdUser($users[rand(0,count($users)-1)]);
             $manager->persist($article);
             $manager->flush();
         }
