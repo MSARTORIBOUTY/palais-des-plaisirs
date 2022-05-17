@@ -31,19 +31,19 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50)]
     private $username;
 
-    #[ORM\ManyToOne(targetEntity: Roles::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private $id_role;
-
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Comments::class)]
     private $comments;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable: false)]
     private $isVerified = false;
+
+    #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Articles::class, orphanRemoval: true)]
+    private $articles;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,18 +128,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getIdRole(): ?Roles
-    {
-        return $this->id_role;
-    }
-
-    public function setIdRole(?Roles $id_role): self
-    {
-        $this->id_role = $id_role;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Comments>
      */
@@ -170,7 +158,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isVerified(): bool
+    public function isVerified(): ?bool
     {
         return $this->isVerified;
     }
@@ -178,6 +166,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Articles>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Articles $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Articles $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getIdUser() === $this) {
+                $article->setIdUser(null);
+            }
+        }
 
         return $this;
     }

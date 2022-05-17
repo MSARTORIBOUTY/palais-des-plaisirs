@@ -19,7 +19,7 @@ class Articles
     private $title;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $pricture;
+    private $picture;
 
     #[ORM\Column(type: 'text')]
     private $content;
@@ -36,6 +36,10 @@ class Articles
     #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
     private $id_categorie;
+
+    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $id_user;
 
     public function __construct()
     {
@@ -55,18 +59,6 @@ class Articles
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getPricture(): ?string
-    {
-        return $this->pricture;
-    }
-
-    public function setPricture(string $pricture): self
-    {
-        $this->pricture = $pricture;
 
         return $this;
     }
@@ -145,6 +137,30 @@ class Articles
     public function setIdCategorie(?Categories $id_categorie): self
     {
         $this->id_categorie = $id_categorie;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?Users
+    {
+        return $this->id_user;
+    }
+
+    public function setIdUser(?Users $id_user): self
+    {
+        $this->id_user = $id_user;
 
         return $this;
     }
