@@ -29,10 +29,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50)]
     private $username;
 
-    #[ORM\ManyToOne(targetEntity: Roles::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private $id_role;
-
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Comments::class)]
     private $comments;
 
@@ -119,18 +115,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    public function getIdRole(): ?Roles
-    {
-        return $this->id_role;
-    }
-
-    public function setIdRole(?Roles $id_role): self
-    {
-        $this->id_role = $id_role;
 
         return $this;
     }

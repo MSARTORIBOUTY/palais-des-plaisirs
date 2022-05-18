@@ -19,7 +19,7 @@ class Articles
     private $title;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $pricture;
+    private $picture;
 
     #[ORM\Column(type: 'text')]
     private $content;
@@ -59,14 +59,14 @@ class Articles
         return $this;
     }
 
-    public function getPricture(): ?string
+    public function getPicture(): ?string
     {
         return $this->pricture;
     }
 
-    public function setPricture(string $pricture): self
+    public function setPicture(string $picture): self
     {
-        $this->pricture = $pricture;
+        $this->picture = $picture;
 
         return $this;
     }
