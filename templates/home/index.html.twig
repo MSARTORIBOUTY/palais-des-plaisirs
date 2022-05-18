@@ -1,0 +1,85 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+    <h2>Bienvuenue sur Palais des Plaisirs !</h2>
+
+    <div class="container">
+        <div>
+            <p id="welcomeMessage">Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.</p>
+        </div>
+        <div class="wrapper">
+        <div class="row">
+            <div class="col-4">
+                <div class="section-1">
+                    <h4>Bonjour</h4>
+                    <div class="sepLittle"></div>
+                    <p>Lorem ipsum dolor sit amet. Ea unde eaque et rerum incidunt ad voluptas corporis et corrupti voluptatum ab harum harum est consequatur odit a eius aspernatur! Sit quaerat nesciunt a possimus corporis aut accusantium excepturi et placeat repellat. Est repudiandae nulla in repellat tempora nam quos dolores qui suscipit voluptates? Sed tenetur repellendus quo reprehenderit voluptatum id minima voluptatum sit soluta facilis. </p>
+                </div>
+
+                <div class="section-2" id="socialMedias">
+                    <ul>
+                        <li><img src="{{asset('img/instagram.png')}}" alt="instagram"></li>
+                        <li><img src="{{asset('img/facebook.png')}}"></li>
+                        <li><img src="{{asset('img/pinterest.png')}}"></li>
+                        <li><img src="{{asset('img/youtube.png')}}"></li>
+                    </ul>
+                </div>
+
+                <div class="section-3">
+                    <div class="sep">
+                        <div class="star-sep"></div>
+                        {# <i class="bi bi-star-fill"></i> #}
+                        <img src="{{asset('img/star-fill.svg')}}"/>
+                        <div class="star-sep"></div>
+                    </div>
+                    <div id="best">
+                    <h3>Elu meilleur blog culinaire</h3>
+                    </div>
+                </div>
+
+                <div class="section-4">
+                    <h4>Ma dernière recette</h4>
+                    <div class="sepLittle"></div>
+                    <div class="card border-0">
+                        <img id="lastRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <div class="card-block">
+                            <p>Title</p>
+                            <a href="#" class="btn btn-primary">Voir la recette</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-8">
+                <div class="card" >
+                    <img class="card-img-top" src="{{asset('img/aperitif-1.jpg')}}" alt="Card image cap">
+                    <div class="card-body">
+                        <div class="card-desc">
+                            <ul class="desc-list">
+                                <li><img src="{{asset('img/person-fill.svg')}}"/> UserName</li>
+                                <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le </li>
+                                <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> Catégorie</li>
+                            </ul>
+                        </div>
+                        <h5 class="card-title">Nulla dapibus malesuada euismod. Donec id ante purus</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu metus venenatis metus sodales interdum. </p>
+                        <a href="#" class="btn input-block-level form-control">Go somewhere</a>
+                        <hr class="commentSep"/>
+                        <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+                    
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+    
+
+
+{% endblock %}
