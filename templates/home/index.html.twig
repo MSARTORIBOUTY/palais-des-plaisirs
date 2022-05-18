@@ -56,25 +56,33 @@
                 
             </div>
             <div class="col-8">
-                <div class="card" >
-                    <img class="card-img-top" src="{{asset('img/aperitif-1.jpg')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <div class="card-desc">
-                            <ul class="desc-list">
-                                <li><img src="{{asset('img/person-fill.svg')}}"/> UserName</li>
-                                <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le </li>
-                                <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> Catégorie</li>
-                            </ul>
+                {% for article in articles %}
+                    <div class="card" >
+                        <img class="card-img-top" src="{{ asset(article.picture)}}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="card-desc">
+                                <ul class="desc-list">
+                                    {# {{ set user = article.getIdUser, categorie = article.getIdCategorie}} #}
+                                    <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
+                                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> {{article.dateCreate|date}} </li>
+                                    <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
+                                </ul>
+                            </div>
+                            <h5 class="card-title">{{article.title}}</h5>
+                            <p class="card-text">{{ article.content|length > 50 ? article.content|slice(0, 50) ~ '...' : article.content}}</p>
+                            <a href="#" class="btn input-block-level form-control">Go somewhere</a>
+                            <hr class="commentSep"/>
+                            <p><img src="{{asset('img/message.svg')}}"/> {{ article.comments|length }} commentaire(s)<p>
+                        
                         </div>
                         <h5 class="card-title">Nulla dapibus malesuada euismod. Donec id ante purus</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu metus venenatis metus sodales interdum. </p>
                         <a href="{{path('recipe')}}" class="btn input-block-level form-control">Voir la recette</a>
                         <hr class="commentSep"/>
                         <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
-                    
+
                     </div>
-                </div>
-                
+                {% endfor %}
             </div>
         </div>
         </div>
