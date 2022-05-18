@@ -21,7 +21,7 @@ class MessageController extends AbstractController
     //     ]);
     // }
 
-    #[Route('/', name: 'app_message_create', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'contact', methods: ['GET', 'POST'])]
     public function new(Request $request, MessageRepository $messageRepository): Response
     {
         $message = new Message();
