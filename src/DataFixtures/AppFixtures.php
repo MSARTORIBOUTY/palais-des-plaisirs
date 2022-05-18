@@ -72,7 +72,7 @@ class AppFixtures extends Fixture
         }
 
         $img = ['img/aperitif-1.jpg', 'img/aperitif-2.jpg', 'img/bruschetta-b.jpg', 'img/bruschetta.jpg', 'img/burger.jpg', 'img/cake.jpg', 'img/cookies.jpg', 'img/cupcakes.jpg', 'img/gnocchis.jpg', 'img/pasta.jpg', 'img/pizza.jpg', 'img/rice.jpg', 'img/salad.jpg', 'img/sushis.jpg'];
-        $title = "Abusus enim multitudine hominum";
+        $title = "Nulla dapibus malesuada euismod. Donec id ante purus";
         $ingredients = "Inconnus";
         $content = "Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.";
         $time = strtotime('10/01/2022');
