@@ -21,7 +21,7 @@ class MessageController extends AbstractController
     //     ]);
     // }
 
-    #[Route('/', name: 'app_message_new', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'app_message_create', methods: ['GET', 'POST'])]
     public function new(Request $request, MessageRepository $messageRepository): Response
     {
         $message = new Message();
@@ -34,7 +34,7 @@ class MessageController extends AbstractController
             return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('message/new.html.twig', [
+        return $this->renderForm('message/index.html.twig', [
             'message' => $message,
             'form' => $form,
         ]);
