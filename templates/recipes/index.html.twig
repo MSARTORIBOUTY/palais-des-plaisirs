@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block title %}Recettes
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="card-recipes" >
+            <img class="card-img-top" src="{{asset('img/aperitif-1.jpg')}}" alt="Card image cap">
+            <div class="card-body">
+                <div class="card-desc">
+                    <ul class="desc-list">
+                        <li><img src="{{asset('img/person-fill.svg')}}"/> UserName</li>
+                        <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le </li>
+                        <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> Catégorie</li>
+                    </ul>
+                </div>
+                <h5 class="card-title">Nulla dapibus malesuada euismod. Donec id ante purus</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu metus venenatis metus sodales interdum. </p>
+                <a href="#" class="btn input-block-level form-control">Go somewhere</a>
+                <hr class="commentSep"/>
+                <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+                    
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
