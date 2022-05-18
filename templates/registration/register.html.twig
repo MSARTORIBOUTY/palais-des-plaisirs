@@ -3,18 +3,23 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
 
-    <h1>Register</h1>
+    <div class="container">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username, { 'attr': {'placeholder': 'Pseudo' }}) }}
-        {{ form_row(registrationForm.email, { 'attr': {'placeholder': 'E-mail' }}) }}
-        {{ form_row(registrationForm.plainPassword, { 'attr': {'placeholder': 'Mot de passe' } }) }}
+        <h2>Inscription</h2>
+
+        {{ form_start(registrationForm, { 'attr': {'class': 'register'}}) }}
+            {{ form_row(registrationForm.username, { 'attr': {'placeholder': 'Pseudo' , 'class': 'register-input'}}) }}
+            {{ form_row(registrationForm.email, { 'attr': {'placeholder': 'E-mail', 'class': 'register-input' }}) }}
+            {{ form_row(registrationForm.plainPassword, { 'attr': {'placeholder': 'Mot de passe', 'class': 'register-input' } }) }}
 
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <button type="submit" class="register-btn">Register</button>
+        {{ form_end(registrationForm) }}
+    
+    </div>
+    
 {% endblock %}
