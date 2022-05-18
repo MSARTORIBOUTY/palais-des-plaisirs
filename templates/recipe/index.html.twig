@@ -1,0 +1,93 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="card-recipe" >
+            <div class="card-desc">
+                <ul class="desc-list">
+                    <li><img src="{{asset('img/person-fill.svg')}}"/> UserName</li>
+                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le </li>
+                    <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> Catégorie</li>
+                </ul>
+            </div>
+            <h5 class="card-title">Nulla dapibus malesuada euismod. Donec id ante purus</h5>
+            <img class="card-img" src="{{asset('img/aperitif-1.jpg')}}" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">Lorem ipsum dolor sit amet. Qui dolorum temporibus sit Quis fuga qui officiis voluptatem ut distinctio ipsa. Ut velit vitae vel dolore quia aut galisum dignissimos At ducimus quia At temporibus quod. Et accusamus itaque est omnis corrupti et possimus asperiores est temporibus rerum quo voluptas fugit.
+
+                Et quos praesentium aut consequatur enim non rerum ullam non enim voluptas vel porro laborum 33 voluptatem repellendus? At libero numquam sed veritatis quod et inventore iste qui nemo debitis est consectetur aliquid quo praesentium nihil? Et voluptates atque dolorum tenetur ut galisum corporis qui maiores quas est voluptatem dolore et rerum voluptas vel quam dolor? Est voluptate dolorum sit dolorem voluptatem rem distinctio laborum non maxime nemo eum beatae autem sit illo cumque et quia perspiciatis. </p>
+                <hr class="commentSep"/>
+                <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+                <div class="card-comment">
+                    <p class="comment-title">Rédigé par TEST, le 06/03/2022 20:30</p>
+                    <p class="comment-content">Ceci est un commentaire de l'article</p>
+                    <hr/>
+                </div>       
+            </div>
+        </div>
+
+
+        {# <div class="wrapper">
+            {{ form_start(commentForm, { 'attr': {'class': 'comment'}}) }}
+                {{ form_row(commentForm.username, { 'attr': {'placeholder': 'Pseudo' , 'class': 'comment-input'}}) }}
+                {{ form_row(commentForm.email, { 'attr': {'placeholder': 'Commentaire', 'class': 'comment-input' }}) }}
+
+
+                <button type="submit" class="send-btn">Envoyer</button>
+            {{ form_end(registrationForm) }}
+        </div> #}
+
+        <div class="wrapper">
+            <h5>Recettes récentes</h5>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card border">
+                        <img class="RecentRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <div class="card-content">
+                            <p>Title</p>
+                            <a href="{{path('recipe')}}" class="btn btn-primary">Voir la recette</a>
+                            <hr class="commentSep"/>
+                            <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="card border">
+                        <img class="RecentRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <div class="card-content">
+                            <p>Title</p>
+                            <a href="{{path('recipe')}}" class="btn btn-primary">Voir la recette</a>
+                            <hr class="commentSep"/>
+                            <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="card border">
+                        <img class="RecentRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <div class="card-content">
+                            <p>Title</p>
+                            <a href="{{path('recipe')}}" class="btn btn-primary">Voir la recette</a>
+                            <hr class="commentSep"/>
+                            <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+                        
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        
+        </div>
+    </div>
+
+{% endblock %}

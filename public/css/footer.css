@@ -1,0 +1,58 @@
+:root{
+    --border-type : 1px solid black;
+    --background-color-header:#F8F9F7;
+    --font-family-title: 'Roboto', sans-serif;
+    --font-family-text: 'Montserrat', sans-serif;
+    --font-family-subtitle: 'Petit Formal Script', cursive;
+    --font-family-btn: 'Quicksand', sans-serif;
+    --color-text:#2F2E2E;
+    --color-focus:#84947B;
+    --color-hover:#D3E0D3;
+    --border-sep: 1px solid #8B8585;
+    --color-sep:#8B8585;
+    --color-brown:#b2996b;
+}
+
+footer {
+    background-color: var(--background-color-header);
+    margin-top: 50px;
+}
+.footer-container {
+    width:99%;
+    
+}
+
+.footer-wrapper {
+    justify-content: center;
+    margin:auto;
+    text-align: center;
+    
+
+}
+
+.footer {
+    font-family: var(--font-family-btn);
+    color:var(--color-sep);
+    justify-content: center;
+    margin:auto;
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 5px;
+}
+#Social {
+    justify-content: center;
+    margin:auto;
+    text-align: center;
+}
+.Social {
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0px 5px;
+    display:inline-flex;
+}
+
+.SocialPicture {
+    height: 30px;
+    width: 30px;
+    margin: 0px 5px;
+}

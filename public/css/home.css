@@ -71,17 +71,22 @@ h3 {
 #socialMedias {
     margin: 50px 0px;
     border-top: var(--border-sep);
+    justify-content: center;
+    margin:auto;
+    text-align: center;
 }
 
 #socialMedias ul {
     list-style-type: none;
     margin-top: 20px;
     padding: 0px 5px;
+    display:inline-flex;
 }
 
 #socialMedias ul li img {
     height: 30px;
     width: 30px;
+    margin: 0px 15px 20px;
 }
 
 .sep {
@@ -163,5 +168,5 @@ li:first-child {
 }
 
 .card {
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }

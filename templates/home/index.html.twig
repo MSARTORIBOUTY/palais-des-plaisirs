@@ -23,10 +23,10 @@
 
                 <div class="section-2" id="socialMedias">
                     <ul>
-                        <li><img src="{{asset('img/instagram.png')}}" alt="instagram"></li>
-                        <li><img src="{{asset('img/facebook.png')}}"></li>
-                        <li><img src="{{asset('img/pinterest.png')}}"></li>
-                        <li><img src="{{asset('img/youtube.png')}}"></li>
+                        <li><a href="#"><img src="{{asset('img/instagram.png')}}" alt="instagram"></a></li>
+                        <li><a href="#"><img src="{{asset('img/facebook.png')}}" alt="facebook"></a></li>
+                        <li><a href="#"><img src="{{asset('img/pinterest.png')}}" alt="pinterest"></a></li>
+                        <li><a href="#"><img src="{{asset('img/youtube.png')}}" alt="youtube"></a></li>
                     </ul>
                 </div>
 
@@ -49,7 +49,7 @@
                         <img id="lastRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
                         <div class="card-block">
                             <p>Title</p>
-                            <a href="#" class="btn btn-primary">Voir la recette</a>
+                            <a href="{{path('recipe')}}" class="btn btn-primary">Voir la recette</a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         </div>
                         <h5 class="card-title">Nulla dapibus malesuada euismod. Donec id ante purus</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu metus venenatis metus sodales interdum. </p>
-                        <a href="#" class="btn input-block-level form-control">Go somewhere</a>
+                        <a href="{{path('recipe')}}" class="btn input-block-level form-control">Voir la recette</a>
                         <hr class="commentSep"/>
                         <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
                     
