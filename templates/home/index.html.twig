@@ -70,19 +70,16 @@
                             </div>
                             <h5 class="card-title">{{article.title}}</h5>
                             <p class="card-text">{{ article.content|length > 50 ? article.content|slice(0, 50) ~ '...' : article.content}}</p>
-                            <a href="#" class="btn input-block-level form-control">Go somewhere</a>
+                            <a href="{{path('recipe')}}" class="btn input-block-level form-control">Voir la recette</a>
                             <hr class="commentSep"/>
                             <p><img src="{{asset('img/message.svg')}}"/> {{ article.comments|length }} commentaire(s)<p>
                         
                         </div>
-                        <h5 class="card-title">Nulla dapibus malesuada euismod. Donec id ante purus</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu metus venenatis metus sodales interdum. </p>
-                        <a href="{{path('recipe')}}" class="btn input-block-level form-control">Voir la recette</a>
-                        <hr class="commentSep"/>
-                        <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+
 
                     </div>
                 {% endfor %}
+                <br>
             </div>
         </div>
         </div>

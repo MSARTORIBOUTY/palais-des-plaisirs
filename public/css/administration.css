@@ -1,0 +1,97 @@
+:root{
+    --border-type : 1px solid black;
+    --background-color-header:#F8F9F7;
+    --font-family-title: 'Roboto', sans-serif;
+    --font-family-text: 'Montserrat', sans-serif;
+    --font-family-subtitle: 'Petit Formal Script', cursive;
+    --font-family-btn: 'Quicksand', sans-serif;
+    --color-text:#2F2E2E;
+    --color-focus:#84947B;
+    --color-hover:#D3E0D3;
+    --border-sep: 1px solid #8B8585;
+    --color-sep:#8B8585;
+    --color-brown:#b2996b;
+}
+
+.GridTitle,
+.GridLine,
+.Modif-btn,
+.Delete-btn {
+    text-align: center;
+    margin: 5px 0px;
+
+}
+
+.action-btn {
+    justify-content: center;
+    text-align: center;
+}
+.GridTitle {
+    color:var(--color-focus);
+    
+}
+
+.GridLine {
+    margin-top: 10px;
+}
+
+.rowAdmin {
+    border-top: none !important;
+}
+
+
+.rowAdmin,
+.rowTitle,
+.colTitleAdmin,
+.colAdmin {
+    border-color: var(--color-focus) !important;
+    border-width:2px !important;
+
+}
+
+.Delete-btn,
+.Modif-btn {
+    color: white;
+    font-family: var(--font-family-text);
+    padding: 5px;
+    margin: 10px 0px;
+    font-weight: 300;
+}
+
+.Delete-btn:hover,
+.Modif-btn:hover {
+    background-color: white;
+}
+
+.Delete-btn {
+    background-color: red;
+    border: 1px solid red;
+}
+.Delete-btn:hover {
+    color: red;
+}
+
+.Modif-btn {
+    background-color: var(--color-brown);
+    border: 1px solid var(--color-brown);
+}
+
+.Modif-btn:hover {
+    color: var(--color-brown);
+}
+
+
+.Admin-btn {
+    background-color: var(--color-focus);
+    border: 1px solid var(--color-focus);
+    color: white;
+    font-family: var(--font-family-text);
+    padding: 10px;
+    font-weight: 300;
+    margin: 10px 10px 30px;
+}
+
+.Admin-btn:hover {
+    background-color: white;
+    color: var(--color-focus)
+}

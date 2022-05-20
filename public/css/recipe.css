@@ -16,7 +16,7 @@
 .card-recipe {
     padding: 20px 70px 0px 70px;
     border: 1px solid var(--color-hover);
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .card-recipe .card-title {

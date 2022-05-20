@@ -12,10 +12,22 @@
     --color-sep:#8B8585;
     --color-brown:#b2996b;
 }
+* {-moz-box-sizing: border-box; box-sizing: border-box;}
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
 
 footer {
     background-color: var(--background-color-header);
-    margin-top: 50px;
+    margin-top: auto;
+    bottom:0;
+    width: 100%;
 }
 .footer-container {
     width:99%;
@@ -56,3 +68,4 @@ footer {
     width: 30px;
     margin: 0px 5px;
 }
+
