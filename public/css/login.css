@@ -22,7 +22,7 @@
 .login-input {
     display:block;
     margin:20px auto;
-    border-color: var(--color-focus);
+    border: 1px solid var(--color-focus);
     font-family: var(--font-family-text);
 }
 

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/contact')]
+// #[Route('/contact')]
 class MessageController extends AbstractController
 {
     // #[Route('/', name: 'app_message_index', methods: ['GET'])]
@@ -21,7 +21,7 @@ class MessageController extends AbstractController
     //     ]);
     // }
 
-    #[Route('/', name: 'contact', methods: ['GET', 'POST'])]
+    #[Route('/contact', name: 'contact', methods: ['GET', 'POST'])]
     public function new(Request $request, MessageRepository $messageRepository): Response
     {
         $message = new Message();
@@ -38,6 +38,14 @@ class MessageController extends AbstractController
             'message' => $message,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/message', name: 'messages')]
+    public function index(MessageRepository $repo): Response
+    {
+        $messages = $repo->findAll();
+
+        return $this->render('message/show.html.twig', ['messages' => $messages]);
     }
 
     // #[Route('/{id}', name: 'app_message_show', methods: ['GET'])]

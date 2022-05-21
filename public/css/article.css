@@ -13,30 +13,27 @@
     --color-brown:#b2996b;
 }
 
-.register {
-    margin:auto;
+#articles {
+
     justify-content: center;
     text-align: center;
-}
-
-.register-input {
-    display:block;
-    margin:20px auto;
-    border: 1px solid var(--color-focus);
     font-family: var(--font-family-text);
 }
 
-.register-btn {
-    background-color: var(--color-focus);
-    border: 1px solid var(--color-focus);
-    color: white;
-    font-family: var(--font-family-text);
-    padding: 10px;
-    font-weight: bold;
-    margin: 10px 0px;
-}
+#articles label {
+    color:var(--color-focus);
+    margin-bottom: 0px;
 
-.register-btn:hover {
+}
+.input-article {
+    width:100%;
     background-color: white;
-    color: var(--color-focus)
+    display:block;
+    margin:10px auto 20px;
+    font-family: var(--font-family-text);
+    border:1px solid var(--color-focus);
+}
+
+#articles_picture {
+    border: 1px solid var(--color-focus);
 }
