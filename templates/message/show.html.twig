@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Message index{% endblock %}
+{% block title %}Message reçus{% endblock %}
 
 {% block body %}
-    <h1>Message index</h1>
+    <h1>Messages reçus</h1>
 
     <table class="table">
         <thead>
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_message_new') }}">Create new</a>
+    {# <a href="{{ path('app_message_new') }}">Create new</a> #}
 {% endblock %}

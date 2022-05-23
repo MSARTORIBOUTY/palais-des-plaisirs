@@ -23,10 +23,10 @@
 
                 <div class="section-2" id="socialMedias">
                     <ul>
-                        <li><img src="{{asset('img/instagram.png')}}" alt="instagram"></li>
-                        <li><img src="{{asset('img/facebook.png')}}"></li>
-                        <li><img src="{{asset('img/pinterest.png')}}"></li>
-                        <li><img src="{{asset('img/youtube.png')}}"></li>
+                        <li><a href="#"><img src="{{asset('img/instagram.png')}}" alt="instagram"></a></li>
+                        <li><a href="#"><img src="{{asset('img/facebook.png')}}" alt="facebook"></a></li>
+                        <li><a href="#"><img src="{{asset('img/pinterest.png')}}" alt="pinterest"></a></li>
+                        <li><a href="#"><img src="{{asset('img/youtube.png')}}" alt="youtube"></a></li>
                     </ul>
                 </div>
 
@@ -43,13 +43,13 @@
                 </div>
 
                 <div class="section-4">
-                    <h4>Ma dernière recette</h4>
+                    <h4>La dernière recette</h4>
                     <div class="sepLittle"></div>
                     <div class="card border-0">
-                        <img id="lastRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <img id="lastRecipe" src="{{asset(lastArticle.picture)}}" alt="Last Recipe Image"/>
                         <div class="card-block">
-                            <p>Title</p>
-                            <a href="#" class="btn btn-primary">Voir la recette</a>
+                            <p>{{lastArticle.title}}</p>
+                            <a href="{{path('recipe_show', {'id' : lastArticle.id})}}" class="btn btn-primary">Voir la recette</a>
                         </div>
                     </div>
                 </div>
@@ -70,13 +70,16 @@
                             </div>
                             <h5 class="card-title">{{article.title}}</h5>
                             <p class="card-text">{{ article.content|length > 50 ? article.content|slice(0, 50) ~ '...' : article.content}}</p>
-                            <a href="#" class="btn input-block-level form-control">Go somewhere</a>
+                            <a href="{{path('recipe_show', {'id' : article.id})}}" class="btn input-block-level form-control">Voir la recette</a>
                             <hr class="commentSep"/>
                             <p><img src="{{asset('img/message.svg')}}"/> {{ article.comments|length }} commentaire(s)<p>
                         
                         </div>
+
+
                     </div>
                 {% endfor %}
+                <br>
             </div>
         </div>
         </div>

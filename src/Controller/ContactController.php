@@ -7,15 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class ContactController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/contact', name: 'contact')]
     public function index(ArticlesRepository $repo): Response
     {
-        $articles = $repo->findAll();
+        
 
-        $lastArticle = $repo->findOneBy(array(), array('id' => 'desc'),1,0);
-
-        return $this->render('home/index.html.twig', ['articles' => $articles, 'lastArticle' => $lastArticle]);
+        return $this->render('contact/index.html.twig');
     }
 }

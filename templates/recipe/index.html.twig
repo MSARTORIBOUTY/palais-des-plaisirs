@@ -1,0 +1,79 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="card-recipe" >
+            <div class="card-desc">
+                <ul class="desc-list">
+                    <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
+                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{ article.dateCreate ? article.dateCreate|date('Y-m-d') : '' }}</li>
+                    <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
+                </ul>
+            </div>
+            <h5 class="card-title">{{article.title}}</h5>
+            <img class="card-img" src="{{asset(article.picture)}}" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text"> {{article.content}}</p>
+                <hr class="commentSep"/>
+                <p><img src="{{asset('img/message.svg')}}"/> {{ article.comments|length }} commentaire(s)<p><br>
+                
+                {% for comment in article.comments %}
+                    <div class="card-comment">
+                        {% if comment.getIdUser() is same as(app.user) or is_granted('ROLE_ADMIN') %}
+                            <form action="" method="POST">
+                                <button name="delete_comment" value={{comment.id}} >{{ button_label|default('Supprimer') }}</button>
+                            </form>
+                        {% endif %}
+                        <p class="comment-title">Rédigé par {{comment.getIdUser.username}}, le {{ comment.dateCreate ? comment.dateCreate|date('d-m-Y H:m') : '' }}</p>
+                        <p class="comment-content">{{comment.content}}</p>
+                        <hr/>
+                    </div>
+                {% endfor %}         
+            </div>
+        </div>
+
+        {% if app.user %}
+            <div class="wrapper">
+                <p>Laisser un commentaire</p>
+
+                {{ form_start(commentForm, { 'attr': {'class': 'comment'}}) }}
+                    {{ form_row(commentForm.content, { 'attr': {'placeholder': 'Commentaire', 'class': 'comment-input' }}) }}
+
+
+                    <div class="container-btn">
+                        <button class="contact-btn">{{ button_label|default('Envoyer') }}</button>
+                    </div>
+                {{ form_end(commentForm) }}
+            </div>
+        {% endif %}
+
+        <div class="wrapper">
+            <h5>Recettes récentes</h5>
+
+            <div class="row">
+                {% for article in lastArticles %}
+                    <div class="col-sm">
+                        <div class="card border">
+                            <img class="RecentRecipe" src="{{asset(article.picture)}}"/>
+                            <div class="card-content">
+                                <p>{{article.title}}</p>
+                                <a href="{{path('recipe_show', {'id' : article.id})}}" class="btn btn-primary">Voir la recette</a>
+                                <hr class="commentSep"/>
+                                <p><img src="{{asset('img/message.svg')}}"/> {{ article.comments|length }} commentaire(s)<p>                        
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            
+            </div>
+        
+        </div>
+    </div>
+
+{% endblock %}

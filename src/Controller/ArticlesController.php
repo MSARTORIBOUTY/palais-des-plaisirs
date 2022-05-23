@@ -3,8 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\Comments;
 use App\Form\ArticlesType;
+use App\Form\CommentsType;
 use App\Repository\ArticlesRepository;
+use App\Repository\CommentsRepository;
+use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +22,7 @@ class ArticlesController extends AbstractController
     #[Route('/', name: 'recipes', methods: ['GET'])]
     public function index(ArticlesRepository $articlesRepository): Response
     {
-        return $this->render('articles/index.html.twig', [
+        return $this->render('recipes/index.html.twig', [
             'articles' => $articlesRepository->findAll(),
         ]);
     }
@@ -40,11 +46,39 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'recipes_show', methods: ['GET'])]
-    public function show(Articles $article): Response
+    #[Route('/{id}', name: 'recipe_show', methods: ['GET', 'POST'])]
+    public function show(Request $request, Articles $article, CommentsRepository $commentsRepository, ArticlesRepository $repoArticle, CommentsRepository $repoComment): Response
     {
-        return $this->render('articles/show.html.twig', [
+        $comment = new Comments();
+        $form = $this->createForm(CommentsType::class, $comment);
+        $form->handleRequest($request);
+        $delete = $request->request->get('delete_comment');
+
+        $lastArticles = $repoArticle->findBy(array(), array('id' => 'desc'),3,0);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $user = $this->getUser();
+            $date = new DateTime();
+
+            $comment
+                ->setIdUser($user)
+                ->setIdArticle($article)
+                ->setDateCreate($date);
+            $commentsRepository->add($comment, true);
+
+            return $this->redirect($request->getUri());
+        } elseif ($delete) {
+            $comment = $repoComment->findOneBy(array('id' => $delete));
+            $commentsRepository->remove($comment, true);
+        }
+
+
+
+        return $this->render('recipe/index.html.twig', [
             'article' => $article,
+            'commentForm' => $form->createView(),
+            'lastArticles' => $lastArticles,
         ]);
     }
 
