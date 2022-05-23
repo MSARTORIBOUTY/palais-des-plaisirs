@@ -13,6 +13,10 @@
     --color-brown:#b2996b;
 }
 
+a {
+    color: var(--color-focus);
+}
+
 .GridTitle,
 .GridLine,
 .Modif-btn,

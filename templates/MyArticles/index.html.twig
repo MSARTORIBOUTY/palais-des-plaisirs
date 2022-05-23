@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateurs{% endblock %}
+{% block title %}Mes articles{% endblock %}
 
 {% block body %}
 
     <div class="container">
-        <h2>Utilisateurs</h2>
+        <h2>Mes articles</h2>
 
+        <div class="action-btn">
+            <button class="Admin-btn" type="submit">Ajouter un article</button>
+            <button class="Admin-btn" type="submit">Contact</button>  
+        </div>
 
         <div class="wrapper">
             <div class="row border rowTitle">
                 <div class="col-1 border-right colTitleAdmin">
                     <p class="GridTitle">Id</p>
                 </div>
-                <div class="col-2 border-right colTitleAdmin">
-                    <p class="GridTitle">Pseudo</p>
-                </div>
-                <div class="col-3 border-right colTitleAdmin">
-                    <p class="GridTitle">Email</p>
+                <div class="col-5 border-right colTitleAdmin">
+                    <p class="GridTitle">Titre</p>
                 </div>
                 <div class="col-2 border-right colTitleAdmin">
-                    <p class="GridTitle">Rôle</p>
+                    <p class="GridTitle">Catégorie</p>
                 </div>
                 <div class="col-4 colTitleAdmin">
                     <p class="GridTitle">Actions</p>
@@ -31,18 +32,11 @@
                 <div class="col-1 border-right colAdmin">
                     <p class="GridLine">1</p>
                 </div>
-                <div class="col-2 border-right colAdmin">
-                    <p class="GridLine">TheSleepyOtter</p>
-                </div>
-                <div class="col-3 border-right colAdmin">
-                    <p class="GridLine"><a href="mailto:zeucaf_@gmail.com">zeucaf_@gmail.com</a></p>
+                <div class="col-5 border-right colAdmin">
+                    <p class="GridLine">Lorem Ipsum</p>
                 </div>
                 <div class="col-2 border-right colAdmin">
-                    <select name="role" class="role-select GridLine">
-                        <option value="admin">admin</option>
-                        <option value="user">utilisateur</option>
-                        <option value="autor">auteur</option>
-                    </select>
+                    <p class="GridLine">plat</p>
                 </div>
                 <div class="col-4 colAdmin">
                     <div class="action-btn">
