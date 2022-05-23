@@ -3,11 +3,11 @@
     --font-family-title: 'Roboto', sans-serif;
     --color-header:#8B8585;
     --color-focus:#84947B;
+    --border-dropdown: 1px solid #84947B;
     --color-hover:#D3E0D3;
 }
 
 .container-fluid{
-    /* background-color: #F8F9F7; */
     background-color: var(--background-color-header);
  
 }
@@ -39,8 +39,8 @@
 }
 
 .logo {
-    width:10%;
-    height: 10%;
+    width:230px;
+    height: 130px;
     margin:25px;
 }
 
@@ -57,3 +57,31 @@ hr {
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ 
+        display: none;
+        background-color: var(--background-color-header);
+        margin-top: 0px;
+    }
+	.navbar .nav-item:hover .nav-link{ 
+
+      }
+	.navbar .nav-item:hover .dropdown-menu{ 
+        display: block; 
+        margin-top:3px;
+        border: var(--border-dropdown);
+        right:0;  
+    }
+    .dropdown-img {
+        margin: 0px 5px;
+    }
+    .dropdown-item {
+        font-family: var(--font-family-title);
+        color:var(--color-header);
+    }
+    .dropdown-item:hover {
+        background-color: var(--color-focus);
+        color:var(--color-hover);
+    }
+}	

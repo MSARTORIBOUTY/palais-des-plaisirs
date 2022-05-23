@@ -13,8 +13,45 @@
     --color-brown:#b2996b;
 }
 
-.card-recipes {
+.card-recipe {
     padding: 20px 70px 0px 70px;
     border: 1px solid var(--color-hover);
+    margin-bottom: 50px;
+}
+
+.card-recipe .card-title {
     margin-bottom: 20px;
+}
+
+.card-recipe .card-body {
+    padding-left: 0px;
+    padding-right:0px;
+    
+}
+
+.card-recipe .card-body .card-text {
+    margin-bottom: 30px;
+}
+
+.comment-title {
+    color: var(--color-focus);
+    margin-bottom: 0px;
+}
+
+.RecentRecipe {
+    height:150px;
+    weight:150px;
+    object-fit: cover;
+    
+
+}
+
+.card-content {
+    margin: 20px 0px;
+    padding: 0px 10px;
+    
+}
+
+.card-content p {
+    color:var(--color-sep)
 }

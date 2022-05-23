@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recette{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="card-recipe" >
+            <div class="card-desc">
+                <ul class="desc-list">
+                    <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
+                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{article.dateCreate|date('d-m-Y')}}</li>
+                    <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
+                </ul>
+            </div>
+            <h5 class="card-title">{{article.title}}</h5>
+            <img class="card-img" src="{{asset('img/aperitif-1.jpg')}}" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">{{article.content}}</p>
+                <hr class="commentSep"/>
+                <p><img src="{{asset('img/message.svg')}}"/> {{ article.comments|length }}<p>
+
+                {% for comment in article.comments %}
+                    <div class="card-comment">
+                        <p class="comment-title">Rédigé par {{comment.id_user.username}}, le {{ comment.dateCreate ? comment.dateCreate|date('d-m-Y hh:mm') : '' }}</p>
+                        <p class="comment-content">{{comment.content}}</p>
+                        <hr/>
+                    </div>
+                {% endfor %}   
+            </div>
+        </div>
+
+
+        {# <div class="wrapper">
+            {{ form_start(commentForm, { 'attr': {'class': 'comment'}}) }}
+                {{ form_row(commentForm.username, { 'attr': {'placeholder': 'Pseudo' , 'class': 'comment-input'}}) }}
+                {{ form_row(commentForm.email, { 'attr': {'placeholder': 'Commentaire', 'class': 'comment-input' }}) }}
+                <button type="submit" class="send-btn">Envoyer</button>
+            {{ form_end(registrationForm) }}
+        </div> #}
+
+        <div class="wrapper">
+            <h5>Recettes récentes</h5>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card border">
+                        <img class="RecentRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <div class="card-content">
+                            <p>Title</p>
+                            <a href="#" class="btn btn-primary">Voir la recette</a>
+                            <hr class="commentSep"/>
+                            <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="card border">
+                        <img class="RecentRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <div class="card-content">
+                            <p>Title</p>
+                            <a href="#" class="btn btn-primary">Voir la recette</a>
+                            <hr class="commentSep"/>
+                            <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="card border">
+                        <img class="RecentRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <div class="card-content">
+                            <p>Title</p>
+                            <a href="#" class="btn btn-primary">Voir la recette</a>
+                            <hr class="commentSep"/>
+                            <p><img src="{{asset('img/message.svg')}}"/> nbr commentaires<p>
+                        
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ article.title }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ article.picture }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ article.content }}</td>
+            </tr>
+            <tr>
+                <th>DateCreate</th>
+                <td>{{ article.dateCreate ? article.dateCreate|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Ingredients</th>
+                <td>{{ article.ingredients }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('recipes') }}">Retour aux recettes</a>
+
+    <a href="{{ path('recipes_edit', {'id': article.id}) }}">Modifier</a>
+
+    {{ include('articles/_delete_form.html.twig') }}
+{% endblock %}
