@@ -3,35 +3,39 @@
 {% block title %}Message reçus{% endblock %}
 
 {% block body %}
-    <h1>Messages reçus</h1>
+    <div class="containerGrid">
+        <h1>Messages reçus</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Content</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for message in messages %}
-            <tr>
-                <td>{{ message.id }}</td>
-                <td>{{ message.email }}</td>
-                <td>{{ message.content }}</td>
-                <td>
-                    <a href="{{ path('app_message_show', {'id': message.id}) }}">show</a>
-                    <a href="{{ path('app_message_edit', {'id': message.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Content</th>
+                    <th colspan="2">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for message in messages %}
+                <tr>
+                    <td class="rowTable">{{ message.id }}</td>
+                    <td class="rowTable">{{ message.email }}</td>
+                    <td class="rowTable">{{ message.content }}</td>
+                    <td><button class="Modif-btn" type="submit">Modifier</button></td>
+                    <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
+                    {# <td>
+                        <a href="{{ path('app_message_show', {'id': message.id}) }}">show</a>
+                        <a href="{{ path('app_message_edit', {'id': message.id}) }}">edit</a>
+                    </td> #}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     {# <a href="{{ path('app_message_new') }}">Create new</a> #}
 {% endblock %}

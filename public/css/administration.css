@@ -17,47 +17,37 @@ a {
     color: var(--color-focus);
 }
 
-.GridTitle,
-.GridLine,
-.Modif-btn,
-.Delete-btn {
-    text-align: center;
-    margin: 5px auto;
-    
-
+.containerGrid {
+    width:65%;
+    margin: 0px auto;
+}
+table {
+    border-collapse: collapse;
+    border-top:0;
+    font-family: var(--font-family-text);
 }
 
 
+table thead tr th {
+    border-bottom: 2px solid #84947B !important;
+    border-top: none !important;
+    color:var(--color-focus);
+    text-align: center;
+}
+
+table tbody tr td {
+    border-bottom: 1px solid #84947B !important;
+    text-align: center;
+}
+
+table tbody tr .rowTable {
+    vertical-align: middle;
+    
+}
 
 .action-btn {
     justify-content: center;
     text-align: center;
-}
-.GridTitle {
-    color:var(--color-focus);
-    
-}
-
-.GridLine {
-    margin: 10px auto auto;
-    
-}
-
-.rowAdmin {
-    border-top: none !important;
-}
-
-.colAdmin {
-    padding: 0px;
-}
-
-.rowAdmin,
-.rowTitle,
-.colTitleAdmin,
-.colAdmin {
-    border-color: var(--color-focus) !important;
-    border-width:2px !important;
-
 }
 
 .Delete-btn,

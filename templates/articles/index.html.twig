@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Picture</th>
+                <th>Content</th>
+                <th>DateCreate</th>
+                <th>Ingredients</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.picture }}</td>
+                <td>{{ article.content }}</td>
+                <td>{{ article.dateCreate ? article.dateCreate|date('Y-m-d') : '' }}</td>
+                <td>{{ article.ingredients }}</td>
+                <td>
+                    <a href="{{ path('recipes_show', {'id': article.id}) }}">Voir</a>
+                    <a href="{{ path('recipes_edit', {'id': article.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune recette disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('recipes_new') }}">Créer</a>
+{% endblock %}

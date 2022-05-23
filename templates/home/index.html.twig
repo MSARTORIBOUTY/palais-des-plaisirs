@@ -46,10 +46,10 @@
                     <h4>La dernière recette</h4>
                     <div class="sepLittle"></div>
                     <div class="card border-0">
-                        <img id="lastRecipe" src="{{asset('img/aperitif-1.jpg')}}"/>
+                        <img id="lastRecipe" src="{{asset(lastArticle.picture)}}" alt="Last Recipe Image"/>
                         <div class="card-block">
-                            <p>Title</p>
-                            <a href="{{path('recipe')}}" class="btn btn-primary">Voir la recette</a>
+                            <p>{{lastArticle.title}}</p>
+                            <a href="{{path('recipe_show', {'id' : lastArticle.id})}}" class="btn btn-primary">Voir la recette</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                             </div>
                             <h5 class="card-title">{{article.title}}</h5>
                             <p class="card-text">{{ article.content|length > 50 ? article.content|slice(0, 50) ~ '...' : article.content}}</p>
-                            <a href="{{path('recipe')}}" class="btn input-block-level form-control">Voir la recette</a>
+                            <a href="{{path('recipe_show', {'id' : article.id})}}" class="btn input-block-level form-control">Voir la recette</a>
                             <hr class="commentSep"/>
                             <p><img src="{{asset('img/message.svg')}}"/> {{ article.comments|length }} commentaire(s)<p>
                         

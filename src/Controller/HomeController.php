@@ -14,6 +14,8 @@ class HomeController extends AbstractController
     {
         $articles = $repo->findAll();
 
-        return $this->render('home/index.html.twig', ['articles' => $articles]);
+        $lastArticle = $repo->findOneBy(array(), array('id' => 'desc'),1,0);
+
+        return $this->render('home/index.html.twig', ['articles' => $articles, 'lastArticle' => $lastArticle]);
     }
 }

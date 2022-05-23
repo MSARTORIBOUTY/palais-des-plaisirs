@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="containerGrid">
         <h2>Mes articles</h2>
 
         <div class="action-btn">
@@ -12,41 +12,31 @@
             <button class="Admin-btn" type="submit">Contact</button>  
         </div>
 
-        <div class="wrapper">
-            <div class="row border rowTitle">
-                <div class="col-1 border-right colTitleAdmin">
-                    <p class="GridTitle">Id</p>
-                </div>
-                <div class="col-5 border-right colTitleAdmin">
-                    <p class="GridTitle">Titre</p>
-                </div>
-                <div class="col-2 border-right colTitleAdmin">
-                    <p class="GridTitle">Catégorie</p>
-                </div>
-                <div class="col-4 colTitleAdmin">
-                    <p class="GridTitle">Actions</p>
-                </div>
-            </div>
-
-            <div class="row border rowAdmin">
-                <div class="col-1 border-right colAdmin">
-                    <p class="GridLine">1</p>
-                </div>
-                <div class="col-5 border-right colAdmin">
-                    <p class="GridLine">Lorem Ipsum</p>
-                </div>
-                <div class="col-2 border-right colAdmin">
-                    <p class="GridLine">plat</p>
-                </div>
-                <div class="col-4 colAdmin">
-                    <div class="action-btn">
-                        <button class="Modif-btn" type="submit">Modifier</button>
-                        <button class="Delete-btn" type="submit">Supprimer</button>  
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Catégorie</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# {% for  %} #}
+                    <tr>
+                        <td class="rowTable">1</td>
+                        <td class="rowTable">titre de l'article</td>
+                        <td class="rowTable">Plat</td>
+                        <td><button class="Modif-btn" type="submit">Modifier</button></td>
+                        <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
+                    </tr>
+                {# {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %} #}
+            </tbody>
+        </table>
         
     </div>
     
