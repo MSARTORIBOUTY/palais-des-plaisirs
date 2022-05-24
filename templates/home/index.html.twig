@@ -64,7 +64,7 @@
                                 <ul class="desc-list">
                                     {# {{ set user = article.getIdUser, categorie = article.getIdCategorie}} #}
                                     <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
-                                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> {{article.dateCreate|date}} </li>
+                                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{article.dateCreate|date('d/m/Y') }} </li>
                                     <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
                                 </ul>
                             </div>

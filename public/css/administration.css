@@ -105,3 +105,14 @@ table tbody tr .rowTable {
     background-color: white;
     font-family: var(--font-family-text);
 }
+
+.input-change {
+    border: 1px solid var(--color-focus);
+    text-align: center;
+}
+
+.btn-link {
+    color:white;
+
+}
+

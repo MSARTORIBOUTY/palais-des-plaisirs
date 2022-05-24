@@ -27,11 +27,17 @@
                   <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Administration</a>
                   <ul class="dropdown-menu">
 			              <li><a class="dropdown-item" href="{{path('administration')}}"><img class="dropdown-img" src="{{asset('img/gear-fill.svg')}}"/> gestion</a></li>
-			              <li><a class="dropdown-item" href="{{path('article')}}"><img class="dropdown-img" src="{{asset('img/pencil-square.svg')}}"/> Article</a></li>
 			              <li><a class="dropdown-item" href="{{path('messages')}}"><img class="dropdown-img" src="{{asset('img/chat-square-dots-fill.svg')}}"/> Message</a></li>
                     <li><a class="dropdown-item" href="{{path('utilisateurs')}}"><img class="dropdown-img" src="{{asset('img/person-green.svg')}}"/> Utilisateurs</a></li>
-                    <li><a class="dropdown-item" href="{{path('mes articles')}}"><img class="dropdown-img" src="{{asset('img/pencil-square.svg')}}"/> Mes articles</a></li>
-                    <li><a class="dropdown-item" href="{{path('categories')}}"><img class="dropdown-img" src="{{asset('img/list-ul.svg')}}"/> Mes articles</a></li>
+                    <li><a class="dropdown-item" href="{{path('categories')}}"><img class="dropdown-img" src="{{asset('img/list-ul.svg')}}"/> Catégories</a></li>
+		              </ul>
+                </li>
+            {% elseif is_granted('ROLE_AUTHOR') %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Mon espace</a>
+                  <ul class="dropdown-menu">
+                  	<li><a class="dropdown-item" href="{{path('article')}}"><img class="dropdown-img" src="{{asset('img/pencil-square.svg')}}"/> Article</a></li>
+                    <li><a class="dropdown-item" href="{{path('mes articles')}}"><img class="dropdown-img" src="{{asset('img/list-ul.svg')}}"/> Mes articles</a></li>
 		              </ul>
                 </li>
             {% endif %}

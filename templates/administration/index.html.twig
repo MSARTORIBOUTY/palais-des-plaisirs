@@ -8,8 +8,8 @@
         <h2>Administration</h2>
 
         <div class="action-btn">
-            <button class="Admin-btn" type="submit">Ajouter un article</button>
-            <button class="Admin-btn" type="submit">Contact</button>  
+            <button class="Admin-btn" type="submit"><a class="btn-link" href="{{path('article')}}">Ajouter un article</a></button>
+            <button class="Admin-btn" type="submit"><a class="btn-link" href="{{path('contact')}}">Contact</a></button>  
         </div>
 
         <table class="table">
@@ -18,23 +18,26 @@
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Catégorie</th>
-                <th colspan="2">Actions</th>
+                <th>Auteur</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {# {% for  %} #}
+        {% for article in articles %}
             <tr>
-                <td class="rowTable">1</td>
-                <td class="rowTable">titre de l'article</td>
-                <td class="rowTable">Plat</td>
-                <td><button class="Modif-btn" type="submit">Modifier</button></td>
-                <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
+                <td class="rowTable">{{article.id}}</td>
+                <td class="rowTable">{{article.title}}</td>
+                <td class="rowTable">{{article.getIdCategorie.name}}</td>
+                <td class="rowTable">{{article.getIdUser.username}}</td>
+                <form action="" method="POST">
+                    <td><button class="Delete-btn" type="submit" name="delete_article" value={{article.id}}>Supprimer</button> </td>
+                </form>
             </tr>
         {# {% else %}
             <tr>
                 <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %} #}
+            </tr> #}
+        {% endfor %}
         </tbody>
     </table>
         

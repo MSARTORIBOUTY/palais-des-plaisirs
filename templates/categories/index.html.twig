@@ -8,13 +8,12 @@
         <h2>Catégories</h2>
 
         <div class="wrapper">
-            <p>Laisser un commentaire</p>
-            {{ form_start(commentForm, { 'attr': {'class': 'comment'}}) }}
-                {{ form_row(commentForm.content, { 'attr': {'placeholder': 'Nouvelle catégorie', 'class': 'comment-input' }}) }}
+            {{ form_start(categoryForm, { 'attr': {'class': 'comment'}}) }}
+                {{ form_row(categoryForm.name, { 'attr': {'placeholder': 'Nouvelle catégorie', 'class': 'comment-input' }}) }}
                 <div class="container-btn">
                     <button class="contact-btn">{{ button_label|default('Enregistrer') }}</button>
                 </div>
-            {{ form_end(commentForm) }}
+            {{ form_end(categoryForm) }}
         </div>
 
         <table class="table">
@@ -26,18 +25,20 @@
             </tr>
         </thead>
         <tbody>
-        {# {% for  %} #}
+        {% for category in categories %}
             <tr>
-                <td class="rowTable">1</td>
-                <td class="rowTable">Nom</td>
-                <td><button class="Modif-btn" type="submit">Modifier</button></td>
-                <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
+                <form action="" method="POST" name="editForm">
+                    <td class="rowTable">{{category.id}}</td>
+                    <td class="rowTable"><input class="input-change" type="text" name="new_name" value={{category.name}}></td>
+                    <td><button class="Modif-btn" type="submit" name="update_category" value={{category.id}} >Modifier</button></td>
+                    <td><button class="Delete-btn" type="submit" name="delete_category" value={{category.id}} >Supprimer</button> </td>
+                </form>
             </tr>
-        {# {% else %}
-            <tr>
+        {# {% else %} #}
+            {# <tr>
                 <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %} #}
+            </tr> #}
+        {% endfor %}
         </tbody>
     </table>
         

@@ -12,7 +12,7 @@
             <div class="card-desc">
                 <ul class="desc-list">
                     <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
-                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{ article.dateCreate ? article.dateCreate|date('Y-m-d') : '' }}</li>
+                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{ article.dateCreate ? article.dateCreate|date('d/m/Y') : '' }}</li>
                     <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
                 </ul>
             </div>
