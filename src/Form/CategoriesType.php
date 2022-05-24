@@ -24,7 +24,6 @@ class CategoriesType extends AbstractType
                 'attr' => ['class' => 'input-article' ],
                 'choice_label' => 'name'
             ]);
-            
         ;
     }
 

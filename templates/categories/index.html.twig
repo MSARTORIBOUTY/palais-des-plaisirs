@@ -7,7 +7,7 @@
     <div class="containerGrid">
         <h2>Catégories</h2>
 
-        <div class="wrapper">
+        {# <div class="wrapper">
             <p>Laisser un commentaire</p>
             {{ form_start(commentForm, { 'attr': {'class': 'comment'}}) }}
                 {{ form_row(commentForm.content, { 'attr': {'placeholder': 'Nouvelle catégorie', 'class': 'comment-input' }}) }}
@@ -15,7 +15,7 @@
                     <button class="contact-btn">{{ button_label|default('Enregistrer') }}</button>
                 </div>
             {{ form_end(commentForm) }}
-        </div>
+        </div> #}
 
         <table class="table">
         <thead>
@@ -29,7 +29,7 @@
         {# {% for  %} #}
             <tr>
                 <td class="rowTable">1</td>
-                <td class="rowTable">Nom</td>
+                <td class="rowTable"><input class="input-change" type="text" value='Nom'></input></td>
                 <td><button class="Modif-btn" type="submit">Modifier</button></td>
                 <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
             </tr>
