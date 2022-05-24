@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+
+    <div class="containerGrid">
+        <h2>Catégories</h2>
+
+        <div class="wrapper">
+            <p>Laisser un commentaire</p>
+            {{ form_start(commentForm, { 'attr': {'class': 'comment'}}) }}
+                {{ form_row(commentForm.content, { 'attr': {'placeholder': 'Nouvelle catégorie', 'class': 'comment-input' }}) }}
+                <div class="container-btn">
+                    <button class="contact-btn">{{ button_label|default('Enregistrer') }}</button>
+                </div>
+            {{ form_end(commentForm) }}
+        </div>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# {% for  %} #}
+            <tr>
+                <td class="rowTable">1</td>
+                <td class="rowTable">Nom</td>
+                <td><button class="Modif-btn" type="submit">Modifier</button></td>
+                <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
+            </tr>
+        {# {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %} #}
+        </tbody>
+    </table>
+        
+    </div>
+    
+
+    
+{% endblock %}
