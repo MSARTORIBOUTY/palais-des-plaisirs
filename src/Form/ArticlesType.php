@@ -3,12 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Articles;
+use App\Entity\Categories;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ArticlesType extends AbstractType
 {
@@ -24,12 +27,28 @@ class ArticlesType extends AbstractType
                 'attr' => ['class' => 'input-article', 'rows' => '10' ],
             ])
             ->add('picture', FileType::class, [
-                'label' => 'Titre',
+                'label' => 'Image',
                 'attr' => ['class' => 'input-article' ],
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            // 'image/jpeg',
+                            'image/jpeg',
+                            // 'image/webP',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid image',
+                    ])
+                ],
             ])
-            ->add('id_categorie', CategoriesType::class, [
+            ->add('id_categorie', EntityType::class, [
                 'label' => 'Catégorie',
-                'attr' => ['class' => 'fileType']
+                'class' => Categories::class,
+                'attr' => ['class' => 'input-article'],
+                'choice_label' => 'name'
             ])
             
         ;

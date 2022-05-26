@@ -10,12 +10,17 @@
     {% for article in articles %}
         <div class="container">
             <div class="card-recipe" >
-                <img class="card-img-top" src="{{asset(article.picture)}}" alt="Card image cap">
+                {% if article.picture starts with 'img/' %}
+                    <img class="card-img-top" src="{{asset(article.picture)}}" alt="Last Recipe Image"/>
+                {% else %}
+                    <img class="card-img-top" src="{{asset('img/' ~ article.picture)}}" alt="Card image cap">
+                {% endif %}
+                {# <img class="card-img-top" src="{{asset(article.picture)}}" alt="Card image cap"> #}
                 <div class="card-body">
                     <div class="card-desc">
                         <ul class="desc-list">
                             <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
-                            <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{ article.dateCreate ? article.dateCreate|date('Y-m-d') : '' }}</li>
+                            <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{ article.dateCreate ? article.dateCreate|date('d/m/Y') : '' }}</li>
                             <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
                         </ul>
                     </div>

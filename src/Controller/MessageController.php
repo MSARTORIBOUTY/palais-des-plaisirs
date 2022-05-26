@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Message;
+use App\Entity\Users;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UsersRepository;
 
 // #[Route('/contact')]
 class MessageController extends AbstractController
@@ -27,6 +29,7 @@ class MessageController extends AbstractController
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
+        $delete = $request->request->get('delete_message');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $messageRepository->add($message, true);
@@ -40,12 +43,21 @@ class MessageController extends AbstractController
         ]);
     }
 
-    #[Route('/message', name: 'messages')]
-    public function index(MessageRepository $repo): Response
+    #[Route('/message', name: 'messages', methods: ['GET', 'POST'])]
+    public function index(Request $request, MessageRepository $messageRepository): Response
     {
-        $messages = $repo->findAll();
+        $messages = $messageRepository->findAll();
+        $delete = $request->request->get('delete_message');
 
-        return $this->render('message/show.html.twig', ['messages' => $messages]);
+        if ($delete) {
+            $message = $messageRepository->findOneBy(array('id' => $delete));
+            $messageRepository->remove($message, true);
+
+            return $this->redirect($request->getUri());
+        }
+        return $this->render('message/show.html.twig', [
+            'messages' => $messages
+        ]);
     }
 
     // #[Route('/{id}', name: 'app_message_show', methods: ['GET'])]

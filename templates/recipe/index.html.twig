@@ -12,12 +12,16 @@
             <div class="card-desc">
                 <ul class="desc-list">
                     <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
-                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{ article.dateCreate ? article.dateCreate|date('Y-m-d') : '' }}</li>
+                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{ article.dateCreate ? article.dateCreate|date('d/m/Y') : '' }}</li>
                     <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
                 </ul>
             </div>
             <h5 class="card-title">{{article.title}}</h5>
-            <img class="card-img" src="{{asset(article.picture)}}" alt="Card image cap">
+            {% if article.picture starts with 'img/' %}
+                <img class="card-img" src="{{asset(article.picture)}}" alt="Card image cap">
+            {% else %}
+                <img class="card-img" src="{{asset('img/' ~ article.picture)}}" alt="Card image cap">
+            {% endif %}
             <div class="card-body">
                 <p class="card-text"> {{article.content}}</p>
                 <hr class="commentSep"/>
@@ -26,7 +30,7 @@
                 {% for comment in article.comments %}
                     <div class="card-comment">
                         <div class="header-comment">
-                            <p class="comment-title">Rédigé par {{comment.getIdUser.username}}, le {{ comment.dateCreate ? comment.dateCreate|date('d-m-Y H:m') : '' }}</p>
+                            <p class="comment-title">Rédigé par {{comment.getIdUser.username}}, le {{ comment.dateCreate ? comment.dateCreate|date('d/m/Y H:i') : '' }}</p>
                             {% if comment.getIdUser() is same as(app.user) or is_granted('ROLE_ADMIN') %}
                                 <form  action="" method="POST">
                                     <button class="deleteCom-btn" name="delete_comment" value={{comment.id}} >{{ button_label|default('Supprimer') }}</button>
@@ -59,7 +63,12 @@
                 {% for article in lastArticles %}
                     <div class="col-sm">
                         <div class="card border">
-                            <img class="RecentRecipe" src="{{asset(article.picture)}}"/>
+                            {% if article.picture starts with 'img/' %}
+                                <img class="RecentRecipe" src="{{asset(article.picture)}}" alt="Card image cap">
+                            {% else %}
+                                <img class="RecentRecipe" src="{{asset('img/' ~ article.picture)}}" alt="Card image cap">
+                            {% endif %}
+                            {# <img class="RecentRecipe" src="{{asset(article.picture)}}"/> #}
                             <div class="card-content">
                                 <p>{{article.title}}</p>
                                 <a href="{{path('recipe_show', {'id' : article.id})}}" class="btn btn-primary">Voir la recette</a>

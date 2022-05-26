@@ -46,7 +46,11 @@
                     <h4>La dernière recette</h4>
                     <div class="sepLittle"></div>
                     <div class="card border-0">
+                    {% if lastArticle.picture starts with 'img/' %}
                         <img id="lastRecipe" src="{{asset(lastArticle.picture)}}" alt="Last Recipe Image"/>
+                    {% else %}
+                        <img class="card-img" src="{{asset('img/' ~ lastArticle.picture)}}" alt="Card image cap">
+                    {% endif %}
                         <div class="card-block">
                             <p>{{lastArticle.title}}</p>
                             <a href="{{path('recipe_show', {'id' : lastArticle.id})}}" class="btn btn-primary">Voir la recette</a>
@@ -58,13 +62,18 @@
             <div class="col-8">
                 {% for article in articles %}
                     <div class="card" >
-                        <img class="card-img-top" src="{{ asset(article.picture)}}" alt="Card image cap">
+                        {% if article.picture starts with 'img/' %}
+                            <img class="card-img-top" src="{{asset(article.picture)}}" alt="Card image cap">
+                        {% else %}
+                            <img class="card-img-top" src="{{asset('img/' ~ article.picture)}}" alt="Card image cap">
+                        {% endif %}
+                        {# <img class="card-img-top" src="{{ asset(article.picture)}}" alt="Card image cap"> #}
                         <div class="card-body">
                             <div class="card-desc">
                                 <ul class="desc-list">
                                     {# {{ set user = article.getIdUser, categorie = article.getIdCategorie}} #}
                                     <li><img src="{{asset('img/person-fill.svg')}}"/> {{article.getIdUser.username}}</li>
-                                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> {{article.dateCreate|date}} </li>
+                                    <li><img class="circle" src="{{asset('img/circle-fill.svg')}}"/> Le {{article.dateCreate|date('d/m/Y') }} </li>
                                     <li><img class="circle"src="{{asset('img/circle-fill.svg')}}"/> {{article.getIdCategorie.name}}</li>
                                 </ul>
                             </div>

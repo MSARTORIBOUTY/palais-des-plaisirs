@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="containerGrid">
-        <h1>Messages reçus</h1>
+        <h2>Messages reçus</h2>
 
         <table class="table">
             <thead>
@@ -12,21 +12,19 @@
                     <th>Id</th>
                     <th>Email</th>
                     <th>Content</th>
-                    <th colspan="2">actions</th>
+                    <th>actions</th>
                 </tr>
             </thead>
             <tbody>
             {% for message in messages %}
                 <tr>
                     <td class="rowTable">{{ message.id }}</td>
-                    <td class="rowTable">{{ message.email }}</td>
+                    {# <td class="rowTable">{{ message.username }}</td> #}
+                    <td class="rowTable"><a href="mailto:"+{{ message.email }}>{{ message.email }}</a></td>
                     <td class="rowTable">{{ message.content }}</td>
-                    <td><button class="Modif-btn" type="submit">Modifier</button></td>
-                    <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
-                    {# <td>
-                        <a href="{{ path('app_message_show', {'id': message.id}) }}">show</a>
-                        <a href="{{ path('app_message_edit', {'id': message.id}) }}">edit</a>
-                    </td> #}
+                    <form action="" method="POST">
+                        <td><button class="Delete-btn" type="submit" name="delete_message" value={{message.id}}>Supprimer</button> </td>
+                    </form>
                 </tr>
             {% else %}
                 <tr>

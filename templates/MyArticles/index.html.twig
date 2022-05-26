@@ -8,8 +8,8 @@
         <h2>Mes articles</h2>
 
         <div class="action-btn">
-            <button class="Admin-btn" type="submit">Ajouter un article</button>
-            <button class="Admin-btn" type="submit">Contact</button>  
+            <a class="btn-link" href="{{path('article')}}"><button class="Admin-btn" type="submit">Ajouter un article</button></a>
+            <a class="btn-link" href="{{path('contact')}}"><button class="Admin-btn" type="submit">Contact</button></a>  
         </div>
 
         <table class="table">
@@ -22,19 +22,23 @@
                 </tr>
             </thead>
             <tbody>
-                {# {% for  %} #}
+                {% if articles %}
+                    {% for article in articles %}
+                        <tr>
+                            <td class="rowTable">{{article.id}}</td>
+                            <td class="rowTable">{{article.title}}</td>
+                            <td class="rowTable">{{article.getIdCategorie.name}}</td>
+                            <td><button class="Modif-btn" type="submit">Modifier</button></td>
+                            <form action="" method="POST">
+                                <td><button class="Delete-btn" type="submit" name="delete_article" value={{article.id}}>Supprimer</button> </td>
+                            </form>
+                        </tr>
+                    {% endfor %}
+                {% else %}
                     <tr>
-                        <td class="rowTable">1</td>
-                        <td class="rowTable">titre de l'article</td>
-                        <td class="rowTable">Plat</td>
-                        <td><button class="Modif-btn" type="submit">Modifier</button></td>
-                        <td><button class="Delete-btn" type="submit">Supprimer</button> </td>
+                            <td colspan="4">no records found</td>
                     </tr>
-                {# {% else %}
-                    <tr>
-                        <td colspan="4">no records found</td>
-                    </tr>
-                {% endfor %} #}
+                {% endif %}
             </tbody>
         </table>
         

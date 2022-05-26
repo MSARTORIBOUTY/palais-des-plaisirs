@@ -109,4 +109,16 @@ table tbody tr .rowTable {
 .input-change {
     border: 1px solid var(--color-focus);
     text-align: center;
+
+}
+
+
+.btn-link {
+    color:white;
+
+}
+.btn-link:hover {
+    color:var(--color-focus);
+    text-decoration: none;
+
 }
