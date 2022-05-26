@@ -50,6 +50,7 @@ table tbody tr .rowTable {
     text-align: center;
 }
 
+
 .Delete-btn,
 .Modif-btn {
     color: white;
@@ -58,6 +59,7 @@ table tbody tr .rowTable {
     margin: 10px 0px;
     font-weight: 300;
 }
+
 
 .Delete-btn:hover,
 .Modif-btn:hover {
@@ -72,10 +74,13 @@ table tbody tr .rowTable {
     color: red;
 }
 
+
+
 .Modif-btn {
     background-color: var(--color-brown);
     border: 1px solid var(--color-brown);
 }
+
 
 .Modif-btn:hover {
     color: var(--color-brown);
@@ -122,3 +127,4 @@ table tbody tr .rowTable {
     text-decoration: none;
 
 }
+

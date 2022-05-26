@@ -12,7 +12,9 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -111,18 +113,49 @@ class ArticlesController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'recipes_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Articles $article, ArticlesRepository $articlesRepository): Response
+    public function edit(Request $request, Articles $article, ArticlesRepository $articlesRepository, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ArticlesType::class, $article);
+        // $form->get('picture')->setData($article->getPicture());
+        $articlePicture= $article->getPicture();
+        $articlePicture= 'img/'.$articlePicture;
+        
+        
         $form->handleRequest($request);
+        $form->get('picture')->setData(new File($articlePicture));
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $pictureFile = $form->get('picture')->getData();
+
+            if ($pictureFile) {
+                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+                
+                // Move the file to the directory where brochures are stored
+                try {
+                    $pictureFile->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'pictureFilename' property to store the PDF file name
+                // instead of its contents
+                $article->setPicture($newFilename);
+            }
+
             $articlesRepository->add($article, true);
 
             return $this->redirectToRoute('recipes', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('articles/edit.html.twig', [
+        return $this->renderForm('MyArticles/edit.html.twig', [
             'article' => $article,
             'form' => $form,
         ]);
