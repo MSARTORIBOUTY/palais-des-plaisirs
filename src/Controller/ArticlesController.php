@@ -2,11 +2,16 @@
 
 namespace App\Controller;
 
+use App\DataFixtures\SearchData;
 use App\Entity\Articles;
+use App\Entity\Categories;
 use App\Entity\Comments;
 use App\Form\ArticlesType;
+use App\Form\CategoriesType;
 use App\Form\CommentsType;
+use App\Form\SearchType;
 use App\Repository\ArticlesRepository;
+use App\Repository\CategoriesRepository;
 use App\Repository\CommentsRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,10 +29,17 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ArticlesController extends AbstractController
 {
     #[Route('/', name: 'recipes', methods: ['GET'])]
-    public function index(ArticlesRepository $articlesRepository): Response
+    public function index(Request $request, ArticlesRepository $articlesRepository, CategoriesRepository $categoriesRepository): Response
     {
+        $data = new SearchData();
+        $form = $this->createForm(SearchType::class, $data);
+        $form->handleRequest($request);
+
+        $article = $articlesRepository->findSearch($data);
+
         return $this->render('recipes/index.html.twig', [
-            'articles' => $articlesRepository->findAll(),
+            'articles' => $article,
+            'form' => $form->createView()
         ]);
     }
 
@@ -116,7 +128,6 @@ class ArticlesController extends AbstractController
     public function edit(Request $request, Articles $article, ArticlesRepository $articlesRepository, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ArticlesType::class, $article);
-        // $form->get('picture')->setData($article->getPicture());
         $articlePicture= $article->getPicture();
         $articlePicture= 'img/'.$articlePicture;
         

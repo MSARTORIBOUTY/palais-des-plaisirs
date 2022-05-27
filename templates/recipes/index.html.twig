@@ -6,9 +6,17 @@
 {% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="researchContent">
+        <div class="input-group">
+            {% include 'recipes/_search.html.twig' with { form : form} only %}
+        </div>
+    </div>
 
+
+    
     {% for article in articles %}
-        <div class="container">
+        
             <div class="card-recipe" >
                 {% if article.picture starts with 'img/' %}
                     <img class="card-img-top" src="{{asset(article.picture)}}" alt="Last Recipe Image"/>
@@ -32,7 +40,9 @@
                         
                 </div>
             </div>
-        </div>
+        
     {% endfor %}
+    
+    </div>
 
 {% endblock %}
