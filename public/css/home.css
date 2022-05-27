@@ -170,3 +170,15 @@ li:first-child {
 .card {
     margin-bottom:20px;
 }
+
+/*Responsive*/
+@media all and (max-width: 768px) {
+    .container {
+        width:98%;
+    }
+    
+    .left,
+    .right {
+        display: block;
+    }
+}

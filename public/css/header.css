@@ -11,6 +11,11 @@
     background-color: var(--background-color-header);
  
 }
+
+.visible {
+    display:none;
+}
+
 .navbar-nav {
     display:flex;
     justify-content: space-between;
@@ -59,6 +64,7 @@ hr {
 }
 
 @media all and (min-width: 992px) {
+    
 	.navbar .nav-item .dropdown-menu{ 
         display: none;
         background-color: var(--background-color-header);
@@ -85,3 +91,39 @@ hr {
         color:var(--color-hover);
     }
 }	
+
+/*Responsive*/
+@media all and (max-width: 991px) {
+    .visible {
+        display:block;
+        background-color: var(--background-color-header);
+    }
+
+    .visible a {
+        font-family: var(--font-family-title);
+        letter-spacing: 3px;
+        
+    }
+    .navbar-brand {
+        color: #84947B;
+        font-weight: 300;
+    }
+
+    .header-btn {
+        float:right;
+    }
+
+    /* .navbar-brand {
+        display:block;
+        font-family: var(--font-family-title);
+        color:var(--color-focus);
+        font-weight: 300;
+    }
+
+    .visible {
+        display:contents;
+    }
+    .navbar-toggler {
+        display:block;
+    } */
+} 

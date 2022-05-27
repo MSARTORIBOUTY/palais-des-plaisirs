@@ -1,8 +1,76 @@
+<!--Navbar-->
+<nav class="navbar navbar-light light-blue lighten-4 visible">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="{{path('home')}}">Plais Des Plaisirs</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler toggler-example header-btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><img class="logo" style="width: 30px; height:30px; margin:0px;" src="{{asset('img/list.svg')}}" alt="logo"></span></button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+    <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{path('home')}}">Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('recipes')}}">Recettes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('about')}}">A propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('contact')}}">Contact</a>
+        </li>
+        {% if app.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('logout')}}">Déconnexion</a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Administration</a>
+                  <ul class="dropdown-menu">
+			              <li><a class="dropdown-item" href="{{path('administration')}}"><img class="dropdown-img" src="{{asset('img/gear-fill.svg')}}"/> gestion</a></li>
+			              <li><a class="dropdown-item" href="{{path('messages')}}"><img class="dropdown-img" src="{{asset('img/chat-square-dots-fill.svg')}}"/> Message</a></li>
+                    <li><a class="dropdown-item" href="{{path('utilisateurs')}}"><img class="dropdown-img" src="{{asset('img/person-green.svg')}}"/> Utilisateurs</a></li>
+                    <li><a class="dropdown-item" href="{{path('categories')}}"><img class="dropdown-img" src="{{asset('img/list-ul.svg')}}"/> Catégories</a></li>
+		              </ul>
+                </li>
+              {% endif %}
+            {% if is_granted('ROLE_AUTHOR') or is_granted('ROLE_ADMIN') %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Mon espace</a>
+                  <ul class="dropdown-menu">
+                  	<li><a class="dropdown-item" href="{{path('article')}}"><img class="dropdown-img" src="{{asset('img/pencil-square.svg')}}"/> Article</a></li>
+                    <li><a class="dropdown-item" href="{{path('mes articles')}}"><img class="dropdown-img" src="{{asset('img/list-ul.svg')}}"/> Mes articles</a></li>
+		              </ul>
+                </li>
+            {% endif %}
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('login')}}">Connexion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('register')}}">Inscription</a>
+            </li>
+        {% endif %}
+      </ul>
+    <!-- Links -->
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-  <div class="container-fluid">
-
+  <div class="container-fluid">    
+    <!--Web menu-->
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -51,10 +119,6 @@
             </li>
         {% endif %}
       </ul>
-      {# <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
-      </form> #}
     </div>
   </div>
 </nav>
