@@ -1,7 +1,7 @@
 # palais-des-plaisirs
 
-blog culinaires avec gestion utilisateur et articles
-Possibiliter de rédiger un article pour l'autheur et de poster des commentaires pour les utilisateurs
+blog culinaire avec gestion utilisateur et articles.
+Possibilité de rédiger un article pour l'autheur et de poster des commentaires pour tous les utilisateurs
 
 ## Installation
 
